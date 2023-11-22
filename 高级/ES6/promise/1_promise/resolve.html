@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const p1 = Promise.resolve(123)
+        // p1.then((val)=>{
+        //     console.log(val);
+        // })
+
+        // Promise.resolve('成功').then(res=>{
+        //     console.log(res);
+        // },(err)=>{
+        //     console.log(err);
+        // })
+
+        // Promise.resolve([1,2,3]).then(res=>{
+        //     console.log(res[0]);
+        // })
+
+        // promise会重用已存在的promsie实例。
+        // 如果它正在解决一个原生的promise，他会返回同一promise实例，而不会创建一个封装对象
+        // const original = Promise.resolve(33)
+        // const cast = Promise.resolve(original)
+        // cast.then(res=>{
+        //     console.log(res);//33
+        // })
+
+        // console.log(typeof cast);
+        // console.log(cast instanceof Promise,111);
+        // console.log(original == cast); // true
+
+        // resolve thenable对象
+        // const p1 = Promise.resolve({
+        //     then(onFullfill,onReject){
+        //         onFullfill('1111')
+        //     }
+        // })
+        // console.log(p1);
+        // console.log(p1 instanceof Promise); // true
+
+        // p1.then(res=>{
+        //     console.log(res);
+        // },err=>{
+        //     console.log(err);
+        // })
+
+
+        // thenable在回调之前抛出异常,是已拒绝
+        // const thenable = {
+        //     then(onFullfill){
+        //         throw new Error('error111')
+        //         onFullfill('resolving')
+        //     }
+        // }
+        // const p2 = Promise.resolve(thenable)
+        // p2.then(res=>{
+        //     console.log(res);
+        // },err=>{
+        //     console.log(err);
+        // })
+
+
+        // 死循环
+        // const thneableLoop = {
+        //     then(onFullfill,onReject){
+        //         console.log(111);
+        //         onFullfill(thneableLoop)
+        //     }
+        // }
+        // Promise.resolve(thneableLoop)
+
+        
+
+    </script>
+</body>
+</html>

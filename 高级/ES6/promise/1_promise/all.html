@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // const p1 = Promise.resolve(3)
+        // const p2 = 42
+        // const p3 = new Promise((resolve,reject)=>{
+        //     setTimeout(resolve,100,'foo');
+        // })
+        // Promise.all([p1,p2,p3]).then(res=>{
+        //     console.log(res);
+        // })
+
+        // 如果iterable包含非promise值，这些值将被忽略，仍在promise数组汇总
+        // const p =  Promise.all([1,2,3])
+
+        // const p2 = Promise.all([1,2,3,Promise.resolve(444)])
+
+        // const p3 = Promise.all([1,2,3,Promise.reject(444)])
+        // p3.then((res) => { console.log(res) },(err) => { console.log(err,'err'); })
+
+            // promise.all的异步性和同步性
+
+            // const p1 = Promise.all([Promise.resolve(333),Promise.resolve(444)])
+            // const p2 = Promise.all([])
+            // console.log(p1,1); //pending
+            // console.log(p2); // 立即解决
+
+            // setTimeout(() => {
+            //     console.log(111);   
+            //     console.log(p1,2); //fullfilled
+            // });
+            
+                const  p1 = new Promise((resolve,reject)=>{
+                    setTimeout(() => {
+                        resolve('p1延迟解决')
+                    }, 3000);
+                })
+                const p2 = new Promise((resolve,reject)=>{
+                    reject(new Error('p2立即拒绝'))
+                })
+                console.log(111);
+                Promise.all([p1.catch(err=>err),p2.catch(err=>err)]).then(res=>{
+                    console.log(res[0]);
+                    console.log(res[1]);
+                })
+
+    </script>
+</body>
+</html>

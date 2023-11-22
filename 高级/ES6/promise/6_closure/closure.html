@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo atque cupiditate praesentium distinctio alias veniam similique eum maxime beatae doloribus quis, hic impedit a voluptatibus odit saepe nihil sint possimus.
+    <h1>这是h1</h1>
+    <h2>这是h2</h2>
+    <button id="fz12">12</button>
+    <button id="fz14">14</button>
+    <button id="fz16">16</button>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        h1{
+            font-size: 1.5em;
+        }
+        h2{
+            font-size: 1.2em;
+        }
+    </style>
+    <script>
+        // 词法作用域
+        // function init() {
+        //   var name = "Mozilla"; // name 是一个被 init 创建的局部变量
+        //     function displayName() {
+        //         // displayName() 是内部函数，一个闭包
+        //         console.log(name); // 使用了父函数中声明的变量
+        //     }
+        //     displayName();
+        // }
+        // init();
+
+
+        // 闭包
+
+        // function makeFunc() {
+        //     var name = "Mozilla";
+        //     function displayName() {
+        //         console.log(name);
+        //     }
+        //     return displayName;
+        // }
+
+        // var myFunc = makeFunc();
+        // myFunc();
+
+        // 运行这段代码的效果和之前 init() 函数的示例完全一样。其中不同的地方（也是有意思的地方）在于内部函数 displayName() 在执行前，从外部函数返回。
+        // 其他语言，一旦makeFunc执行完毕，一个函数的内部变量将不在被访问。
+        // 但是JavaScript的函数会形成闭包 
+
+
+        // myFunc函数是执行makeFunc时创建的displayName函数实例的引用，displayName的实例维持了一个对它的此法环境的应用。
+        // 因此，当myFunc调用时，变量name仍然可用。
+
+        // function makeAdder(x){
+        //     return function(y){
+        //         return x + y
+        //     }
+        // }
+        // var add5 = makeAdder(5) //闭包
+        // var add10 = makeAdder(10)//闭包
+        // console.log(add5(2),add10(2));
+        // console.log(add5(12));
+
+
+        function makeSizer(size){
+            return function(){
+                document.body.style.fontSize = size + 'px'
+            }
+        }
+        var size12 = makeSizer(12)
+        var size14 = makeSizer(14)
+        var size16 = makeSizer(16)
+        document.getElementById('fz12').onclick  = size12
+        document.getElementById('fz14').onclick  = size14
+        document.getElementById('fz16').onclick  = size16
+
+
+        
+    </script>
+</body>
+</html>

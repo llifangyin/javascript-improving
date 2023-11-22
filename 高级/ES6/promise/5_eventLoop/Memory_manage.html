@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    引用计数垃圾收集
+ & 
+    标记清除算法
+    <script>
+        
+    //   var o = {
+    //     a: {
+    //       b: 2,
+    //     },
+    //   };
+    // //  等价于=>  var b = {b:2},o = {a:b}
+    //   // 两个对象被创建，一个作为另一个的属性被引用，另一个被分配给变量 o
+    //   // 很显然，没有一个可以被垃圾收集
+
+    //   var o2 = o; // o2 变量是第二个对“这个对象”的引用
+
+    //   o = 1; // 现在，“这个对象”只有一个 o2 变量的引用了，
+    // //                 “这个对象”的原始引用 o 已经没有
+
+    //   console.log(o,o2); //o没有了引用，o2还有
+
+    //   var oa = o2.a; // 引用“这个对象”的 a 属性
+    //   // 现在，“这个对象”有两个引用了，一个是 o2，一个是 oa
+
+    //   console.log(oa,o2);
+
+    //   o2 = "yo"; // 虽然最初的对象现在已经是零引用了，可以被垃圾回收了
+    //   // 但是它的属性 a 的对象还在被 oa 引用，所以还不能回收
+
+    //   console.log(oa,o2); // o2没有了引用，oa有
+
+    //   oa = null; // a 属性的那个对象现在也是零引用了
+    //   // 它可以被垃圾回收了
+
+    //   console.log(o2,oa); // 没有了{b:2}的引用
+
+
+    //   循环引用，他们不会被回收
+
+    //   function f(){
+    //     var o = {};
+    //     var o2 = {};
+    //     o.a = o2; // o 引用 o2
+    //     o2.a = o; // o2 引用 o
+    //   }
+    //   f()
+
+    //   IE6 7使用引用计数方式对DOM对象进行垃圾回收。常常造成对象被循环引用时内存发生泄漏
+
+    // var div;
+    // window.onload = function () {
+    //   div = document.getElementById("myDivElement");
+    //   div.circularReference = div;
+    //   div.lotsOfData = new Array(10000).join("*");
+    // };
+    // 标记-清除法
+    // 在上面的示例中，函数调用返回之后，两个对象从全局对象出发无法获取。因此，他们将会被垃圾回收器回收
+
+
+
+    </script>
+  </body>
+</html>

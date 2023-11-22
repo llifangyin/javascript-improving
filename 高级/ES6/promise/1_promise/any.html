@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 返回第一个兑现的值
+        const p1 = Promise.reject(1)
+        const p2 = new Promise((resolve,reject)=>{
+            setTimeout(resolve,100,'foo');
+        })
+        const p3 = new Promise((resolve,reject)=>{
+            setTimeout(resolve,400,'bar');
+        })
+        
+        Promise.any([p1,p2,p3]).then(res=>{
+            console.log(res);
+        })
+        Promise.any([p1]).then(res=>{
+            console.log(res);
+            /// All promises were rejected
+        })
+    </script>
+</body>
+</html>

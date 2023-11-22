@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在创建新的对象或者类时，方法通常应该关联于对象的原型。而不是定义到对象的构造器中
+        // 原因是这将导致每次构造器被调用时，方法都会被重新赋值一次（也就是说，对于每个对象的创建，方法都会被重新赋值）。
+
+        function MyObject (name,message){
+            this.name = name.toString()
+            this.message =  message.toString()
+            this.getName = function(){
+                return this.name
+            }
+            this.getMessage =function(){
+                return this.message
+            }
+        }
+        // 上述没有用到闭包的好处，应避免使用，修改成如下：
+
+
+        function MyObject1 (name,message){
+            this.name = name.toString()
+            this.message =  message.toString()
+        }
+        MyObject1.prototype.getName = function(){
+            return this.name
+        }
+        MyObject1.prototype.getMessage =function(){
+            return this.message
+        }
+
+        let obj1 = new MyObject('zz','xxx')
+        let obj2 = new MyObject('xxx','xxx')
+
+        let obj3 = new MyObject1('ttt','xxx')
+        let obj4 = new MyObject1('eee','xxx')
+        console.log(obj1,obj2,obj3,obj4);
+        console.log(obj1.getName());
+        console.log(obj3.getName());
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 示例展示了，如何用闭包来定义公共函数，并令其可访问私有函数和变量。
+        // 这个方式也成为模块模式
+
+        var Counter = (function(){
+            var privateCounter = 0
+            function changeBy(val){
+                privateCounter += val
+            }
+            return {
+                increment:function(){
+                    changeBy(1)
+                },
+                decrement:function(){
+                    changeBy(-1)
+                },
+                getValue:function(){
+                    return privateCounter
+                }
+            }
+        })()
+        console.log(Counter);        
+        console.log(Counter.getValue());
+        Counter.increment()
+        console.log(Counter.getValue());
+        Counter.decrement()
+        console.log(Counter.getValue());
+
+        // 只创建了一个词法环境，为三个函数所共享 increment decrement getvalue
+
+        // 该共享环境创建与一个立即执行的匿名函数体内。有两个私有项：privateCouter和changeBy
+        // 这两个私有项无法在匿名函数外部直接访问。必须通过匿名函数返回的三个公共函数访问。
+
+        // 这三个公共函数是共享同一个环境的闭包。
+
+        // 匿名函数立即执行创建一个计数器。也可以赋值给一个变量用来创建多个
+        var makeCounter = function () {
+            var privateCounter = 0;
+            function changeBy(val) {
+                privateCounter += val;
+            }
+            return {
+                increment: function () {
+                changeBy(1);
+                },
+                decrement: function () {
+                changeBy(-1);
+                },
+                value: function () {
+                return privateCounter;
+                },
+            };
+        };
+
+        var c1 = makeCounter()
+        var c2 = makeCounter()
+
+        c1.increment()
+        c2.increment()
+        c2.increment()
+        console.log(c1.value(),c2.value());
+    </script>
+</body>
+</html>

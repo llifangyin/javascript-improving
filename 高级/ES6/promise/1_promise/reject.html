@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise.reject(new Error('111')).catch(err=>{
+        //     console.log(err);
+        // })
+
+        const p1 = Promise.resolve(1)
+        const r1 = Promise.reject(p1)
+        console.log(p1 === r1);
+        r1.catch(err=>{
+            console.log(err,222);
+            console.log(err === p1);
+        })
+    </script>
+</body>
+</html>

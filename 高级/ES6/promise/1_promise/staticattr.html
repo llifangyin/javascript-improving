@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Symbol.species 属性返回默认的构造函数， 对于 Promise 来说，它的默认构造函数就是 Promise 构造函数本身。
+    <script>
+        let str = Promise[Symbol.species]
+        console.log(str);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 由 Promise的静态属性扩展至此
+        // Promise[[@species]]返回用于构造promise方法返回值的构造函数
+
+        // 扩展数组类
+        class Array1 extends Array{
+            static get [Symbol.species](){ //构造函数为Array1
+                return Array
+            }
+        }
+        class Array2 extends Array{
+            static get(){ //构造函数为Array2
+                return Array
+            }
+        }
+        const a = new Array1(1,2,3)
+        // 希望使用map等方法返回默认的构造函数时，
+        const mapped = a.map(x=>x*x)
+        console.log(mapped instanceof Array1); // false
+        console.log(mapped instanceof Array); // true
+
+        const b = new Array2(1,2,3)
+        // 希望使用map等方法返回默认的构造函数时，
+        const mappedb = b.map(x=>x*x)
+        console.log(mappedb instanceof Array2); // true
+        console.log(mappedb instanceof Array); // true
+
+    </script>
+</body>
+</html>

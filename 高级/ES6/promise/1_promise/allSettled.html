@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(111);
+        Promise.allSettled([
+            Promise.resolve(3),
+            new Promise((resolve,reject)=>{
+                setTimeout(reject,1000,'foo');
+            })
+        ]).then(res=>{
+            console.log(res[0]);
+            console.log(res[1]);
+        })
+
+        Promise.allSettled([]).then(res=>console.log(res))
+
+    </script>
+</body>
+</html>
