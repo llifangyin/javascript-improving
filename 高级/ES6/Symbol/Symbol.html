@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const s1 = Symbol() 
+        const s2 = Symbol(45)
+        const s3 = Symbol('foo')
+
+        console.log(Symbol.prototype);
+        console.log(Symbol.prototype.valueOf,'valueOf');
+        console.log(Symbol.prototype.toSource,'toSource');
+        console.log(typeof s1); //symbol
+        console.log(s2 == 45); //false
+        console.log(s3.toString() =='Symbol(foo)'); //true
+        console.log(Symbol('bar')== Symbol('bar')); // false
+
+        console.log(s3.description); // foo
+        // const s4 = new Symbol() // typeerror Symbol is not a contrucor
+        
+        var s4Obj = Object(s3)
+        console.log(s4Obj);
+        console.log(typeof s4Obj); //object
+        console.log(s4Obj.description);
+
+        console.log(Symbol.iterator,'iterator'); // Symbol(Symbol.iterator)
+
+        console.log(  typeof Symbol.iterator , typeof Symbol); // symbol function
+
+
+        var obj= {}
+        obj[Symbol('a')] = 'a'
+        obj[Symbol('b')] = 'b'
+        obj['c'] = 'c'
+        obj.d = 'd'
+
+        for( let i in obj){
+            console.log(i,'for.in'); //c  d
+        }
+        console.log(Object.getOwnPropertySymbols(obj),'getOwnpropertySymbols');
+        //[Symbol(a),Symbol(b)]
+        console.log(Object.getOwnPropertyNames(obj),'getOwnpropertyNames');
+        //[c,d]
+
+        console.log(JSON.stringify(obj));
+
+
+        var sym = Symbol('foo')
+        var objsym = {[sym]:1}
+      console.log(  objsym[sym] ); //1
+   
+      console.log(  objsym[Object(sym)] );//1
+        
+
+
+
+    </script>
+</body>
+</html>

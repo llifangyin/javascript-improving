@@ -31,5 +31,3 @@ Promise.prototype
 }
 ```
 
-
-参见另一个单独研究的promise项目 [promise-mdn](https://github.com/llifangyin/promise-mdn)。

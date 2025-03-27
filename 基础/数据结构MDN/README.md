@@ -6,11 +6,11 @@ javascript中类型集合由 原始值 和 对象组成
 
 原始值： 
 
-boolean
-null
-undefined
-number  标准的双精度64位二进制格式的值（-（2^53-1）~ 2^53-1 、 +ifinity -ifinity NAN）
-string ： 16位的无符号整数值的'元素'，不同于其他语言（c），JavaScript的字符串一旦创建，不可修改
+**boolean**
+**null**
+**undefined**
+**number**  标准的双精度64位二进制格式的值（-（2^53-1）~ 2^53-1 、 +ifinity -ifinity NAN）
+**string** ： 16位的无符号整数值的'元素'，不同于其他语言（c），JavaScript的字符串一旦创建，不可修改
 
 Biglnt类型  是一种基础的数值类型，可以表示任意精度的整数，使用它可以安全的存储和操作大整数，甚至可以超过数字类型的安全整数限制。BigInt 是通过在整数末尾附加字母 n 或调用构造函数来创建的
 

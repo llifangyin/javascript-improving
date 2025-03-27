@@ -3,11 +3,11 @@ Map对象：
 es6引入一个新的数据结构来讲一个值映射到另一个值。
 一个map对象就是一个简单的**键值对映射集合**，可以按照插入时的顺序遍历所有的元素。
 
-May和Object的比较
+Map和Object的比较
 object必须是string类型，**map键可以设置任意类型**
 尺寸：object.keys.length，**map.size**直接获取
 map的**遍历遵循元素的插入顺序**
-object有圆型，所以映射中有一些缺省的键（map=object。create(null)回避）
+object有原型，所以映射中有一些缺省的键（map=object。create(null)回避）
 
 
 使用map的情形：

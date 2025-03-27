@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Symbol.for('foo')//创建一个symbol放入symbol注册表中，键为foo
+        console.log(Symbol.for('foo'));
+        Symbol.for('foo') //读取键位foo的symbol
+
+        console.log(Symbol.for('bar') === Symbol.for('bar'),'=')//true
+        console.log(Symbol('bar') === Symbol('bar'),'!=')//false
+        Symbol.for("mdn.foo");
+        Symbol.for("mdn.bar");  
+
+        var globalSym = Symbol.for('golbal')
+        console.log(Symbol.keyFor(globalSym));
+
+        let a = Object(Symbol('foo')).valueOf()+ 'bar'
+
+
+        
+    </script>
+</body>
+</html>
